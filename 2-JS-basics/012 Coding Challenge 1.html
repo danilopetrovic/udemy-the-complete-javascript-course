@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    var john = {
+        name: "John",
+        mass: 92,//kg
+        height: 1.95, //meters
+        bdi: 0
+    };
+    var mark = {
+        name: "Mark",
+        mass: 78, //kg
+        height: 1.69, //meters
+        bdi: 0
+    };
+    var markHasHigherBdiThanJohn;
+
+    function calculateBDI(mass, height) {
+        return BDI = mass / height ** 2;
+    }
+
+    function logBDIOfUser(objName) {
+        objName.bdi = calculateBDI(objName.mass, objName.height);
+        console.log(objName.name + ' have bdi index of ' + objName.bdi);
+    }
+
+    function izracunaj(markHasHigherBdiThanJohn) {
+        markHasHigherBdiThanJohn = mark.bdi > john.bdi;
+        console.log('Mark has higher BDI than John: ' + markHasHigherBdiThanJohn);
+    }
+
+    logBDIOfUser(john);
+    logBDIOfUser(mark);
+    izracunaj(markHasHigherBdiThanJohn);
+
+</script>
+</body>
+</html>
