@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    var teamJohn = {
+        name: 'John\'s team',
+        scores: [89, 120, 103],
+        avgScore: 0
+    };
+    var teamMark = {
+        name: 'Mark\'s team',
+        scores: [116, 94, 123],
+        avgScore: 0
+    };
+    var teamMary = {
+        name: 'Mary\'s team',
+        scores: [97, 134, 105],
+        avgScore: 0
+    };
+    var teamDanilo = {
+        name: 'Danilo\'s team',
+        scores: [970, 69, 59],
+        avgScore: 0
+    };
+
+    function averageScore(niz) {
+        let sum = 0;
+        for (let i = 0; i < niz.length; i++) {
+            sum = sum + niz[i];
+        }
+        return sum;
+    }
+
+    function teamComparation(...params) {
+        let avgScoreArray = [];
+        for (let i = 0; i < params.length; i++) {
+            params[i].avgScore = averageScore(params[i].scores);
+            avgScoreArray.push(params[i]);
+        }
+        // console.log(avgScoreArray);
+        // avgScoreArray.splice(1,1);
+
+        while (avgScoreArray.length > 0) {
+            let maxIndex = 0;
+            for (let i = 0; i < avgScoreArray.length; i++) {
+                avgScoreArray[i].avgScore > avgScoreArray[maxIndex].avgScore ? maxIndex = i : maxIndex;
+            }
+            console.log('best team is ' + avgScoreArray[maxIndex].name + ' with score ' + avgScoreArray[maxIndex].avgScore);
+            avgScoreArray.splice(maxIndex,1);
+        }
+    }
+
+    teamComparation(teamJohn, teamMark, teamMary, teamDanilo);
+</script>
+</body>
+</html>
