@@ -4,97 +4,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+            content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
-
 <body>
-    <script>
-        var teamJohn = {
-            name: 'John',
-            bills: [124, 48, 268, 180, 42, 300],
-            rules: [
-                { start: 0, end: 50, tip: .2 },
-                { start: 50, end: 200, tip: .15 },
-                { start: 200, end: false, tip: .1 }
-            ]
-        };
-        var teamMark = {
-            name: 'Mark',
-            bills: [77, 375, 110, 45],
-            rules: [
-                { start: 0, end: 100, tip: .2 },
-                { start: 100, end: 300, tip: .1 },
-                { start: 300, end: false, tip: .25 }
-            ]
-        };
+<script>
+    var teamJohn = {
+        name: 'John',
+        bills: [124, 48, 268, 180, 42, 300],
+        rules: [
+            {start: 0, end: 50, tip: .2},
+            {start: 50, end: 200, tip: .15},
+            {start: 200, end: false, tip: .1}
+        ]
+    };
+    var teamMark = {
+        name: 'Mark',
+        bills: [77, 375, 110, 45],
+        rules: [
+            {start: 0, end: 100, tip: .2},
+            {start: 100, end: 300, tip: .1},
+            {start: 300, end: false, tip: .25}
+        ]
+    };
 
-        console.log(teamJohn);
-        console.log(teamMark);
+    console.log(teamJohn);
+    console.log(teamMark);
 
-        function calculateTips(obj) {
-            //setting attributes "tips" and "tipsAndBills" to passed object
-            obj.tips = [];
-            obj.tipsAndBills = [];
-            for (let i = 0; i < obj.bills.length; i++) {
-                let bill = obj.bills[i];
-                // console.log(bill);
-                // console.log(obj.rules[i].end);
+    function calculateTips(obj) {
+        //setting attributes "tips" and "tipsAndBills" to passed object
+        obj.tips = [];
+        obj.tipsAndBills = [];
+        for (let i = 0; i < obj.bills.length; i++) {
+            let bill = obj.bills[i];
+            // console.log(bill);
+            // console.log(obj.rules[i].end);
 
-                for (let j = 0; j < obj.rules.length; j++) {
-                    let start = obj.rules[j].start;
-                    let end = obj.rules[j].end;
-                    let tip = obj.rules[j].tip;
-                    if (bill > start && bill <= end) {
-                        obj.tips.push(bill * tip);
-                        obj.tipsAndBills.push(bill + bill * tip);
-                    }
-                    if (bill > start && end === false) {
-                        obj.tips.push(bill * tip);
-                        obj.tipsAndBills.push(bill + bill * tip);
-                    }
+            for (let j = 0; j < obj.rules.length; j++) {
+                let start = obj.rules[j].start;
+                let end = obj.rules[j].end;
+                let tip = obj.rules[j].tip;
+                if (bill > start && bill <= end) {
+                    obj.tips.push(bill * tip);
+                    obj.tipsAndBills.push(bill + bill * tip);
+                }
+                if (bill > start && end === false) {
+                    obj.tips.push(bill * tip);
+                    obj.tipsAndBills.push(bill + bill * tip);
                 }
             }
         }
+    }
 
-        // calculateTips(teamJohn);
-        // calculateTips(teamMark);
-        function calculateAverageTips(obj) {
-            obj.averageTip = 0;
-            let sum = 0;
-            for (let i = 0; i < obj.bills.length; i++) {
-                sum += obj.bills[i];
-            }
-            obj.averageTip = sum / obj.bills.length;
+    // calculateTips(teamJohn);
+    // calculateTips(teamMark);
+    function calculateAverageTips(obj) {
+        obj.averageTip = 0;
+        let sum = 0;
+        for (let i = 0; i < obj.bills.length; i++) {
+            sum += obj.bills[i];
         }
+        obj.averageTip = sum / obj.bills.length;
+    }
 
-        function whoHaveBiggerAverageTips(...objects) {
-            let maxIndex = 0;
-            console.log(objects[0]);
-            let obj = objects[0];
-            for (let i = 0; i < obj.length; i++) {
-                // console.log('------------------------------')
-                // console.log(obj[i].averageTip)
-                if (obj[maxIndex].averageTip < obj[i].averageTip) {
-                    maxIndex = i;
-                }
+    function whoHaveBiggerAverageTips(...objects) {
+        let maxIndex = 0;
+        console.log(objects[0]);
+        let obj = objects[0];
+        for (let i = 0; i < obj.length; i++) {
+            // console.log('------------------------------')
+            // console.log(obj[i].averageTip)
+            if (obj[maxIndex].averageTip < obj[i].averageTip) {
+                maxIndex = i;
             }
-            console.log(obj[maxIndex].name + "\'s family have the biggest average tip and that number is $" + obj[maxIndex].averageTip)
         }
+        console.log(obj[maxIndex].name + "\'s team have the biggest average tip and that number is $" + obj[maxIndex].averageTip)
+    }
 
-        function calculateAllToAllObjects(...objects) {
-            // console.log(objects)
-            for (let i = 0; i < objects.length; i++) {
-                calculateTips(objects[i]);
-                calculateAverageTips(objects[i]);
-            }
-            whoHaveBiggerAverageTips(objects);
+    function calculateAllToAllObjects(...objects) {
+        // console.log(objects)
+        for (let i = 0; i < objects.length; i++) {
+            calculateTips(objects[i]);
+            calculateAverageTips(objects[i]);
         }
+        whoHaveBiggerAverageTips(objects);
+    }
 
-        calculateAllToAllObjects(teamJohn, teamMark);
+    calculateAllToAllObjects(teamJohn, teamMark);
 
-    </script>
+</script>
 </body>
-
 </html>
