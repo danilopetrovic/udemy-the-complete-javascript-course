@@ -30,8 +30,26 @@ mark.calculateAge();
 console.log(john.lastName);
 console.log(jane.lastName);
 console.log(mark.lastName);
-*/
 
+
+//moja vezbica...
+var Osoba = function (ime, godinaRodjenja) {
+    this.ime = ime;
+    this.godinaRodjenja = godinaRodjenja;
+};
+Osoba.prototype.brojGodina = function () {
+    return 2022 - this.godinaRodjenja;
+};
+Osoba.prototype.prezime = 'petrovic';
+
+var danilo = new Osoba('danilo', 1986);
+var mihajlo = new Osoba('mihajlo', 1985);
+var nikola = new Osoba('nikola', 1983);
+
+console.log(danilo);
+console.log(mihajlo);
+console.log(nikola);
+*/
 
 
 /////////////////////////////
@@ -54,7 +72,6 @@ var jane = Object.create(personProto, {
     job: { value: 'designer' }
 });
 */
-
 
 
 /////////////////////////////
@@ -98,7 +115,6 @@ console.log(obj.city);
 */
 
 
-
 /////////////////////////////
 // Lecture: Passing functions as arguments
 /*
@@ -138,7 +154,6 @@ console.log(rates);
 */
 
 
-
 /////////////////////////////
 // Lecture: Functions returning functions
 /*
@@ -172,7 +187,6 @@ interviewQuestion('teacher')('Mark');
 */
 
 
-
 /////////////////////////////
 // Lecture: IIFE
 /*
@@ -196,7 +210,6 @@ game();
     console.log(score >= 5 - goodLuck);
 })(5);
 */
-
 
 
 /////////////////////////////
@@ -235,7 +248,6 @@ function interviewQuestion(job) {
 
 interviewQuestion('teacher')('John');
 */
-
 
 
 /////////////////////////////
@@ -301,8 +313,6 @@ console.log(fullJapan);
 */
 
 
-
-
 /////////////////////////////
 // CODING CHALLENGE
 
@@ -363,7 +373,7 @@ c) correct answer (I would use a number for this)
                           2);
 
     var q3 = new Question('What does best describe coding?',
-                          ['Boring', 'Hard', 'Fun', 'Tediuos'],
+                          ['Boring', 'Hard', 'Fun', 'Tedious'],
                           2);
 
     var questions = [q1, q2, q3];
@@ -377,7 +387,6 @@ c) correct answer (I would use a number for this)
     questions[n].checkAnswer(answer);
 })();
 */
-
 
 
 /*
@@ -438,7 +447,7 @@ c) correct answer (I would use a number for this)
                           2);
 
     var q3 = new Question('What does best describe coding?',
-                          ['Boring', 'Hard', 'Fun', 'Tediuos'],
+                          ['Boring', 'Hard', 'Fun', 'Tedious'],
                           2);
     
     var questions = [q1, q2, q3];
