@@ -1,6 +1,5 @@
 /////////////////////////////
 // Lecture: Function constructor
-/*
 var john = {
     name: 'John',
     yearOfBirth: 1990,
@@ -31,8 +30,13 @@ console.log(john.lastName);
 console.log(jane.lastName);
 console.log(mark.lastName);
 
+console.log('Does John has his own property job? ', john.hasOwnProperty('job')); //it has the property because it is his own
+console.log('Does John has his own property lastName? ', john.hasOwnProperty('lastName')); //because lastName is not his own property but it is inherited in prototype
+console.log('Is John instance of constructor Person??? ', john instanceof Person); //`John is realy a instance of Person
+
 
 //moja vezbica...
+console.log('============ MOJA VEZBICA ============')
 var Osoba = function (ime, godinaRodjenja) {
     this.ime = ime;
     this.godinaRodjenja = godinaRodjenja;
@@ -49,7 +53,6 @@ var nikola = new Osoba('nikola', 1983);
 console.log(danilo);
 console.log(mihajlo);
 console.log(nikola);
-*/
 
 
 /////////////////////////////
