@@ -1,5 +1,6 @@
 /////////////////////////////
 // Lecture: Function constructor
+/*
 var john = {
     name: 'John',
     yearOfBirth: 1990,
@@ -53,6 +54,7 @@ var nikola = new Osoba('nikola', 1983);
 console.log(danilo);
 console.log(mihajlo);
 console.log(nikola);
+*/
 
 
 /////////////////////////////
