@@ -23,8 +23,18 @@ function randomNumber() {
     return Math.ceil(Math.random() * 10);
 }
 
-var a = randomNumber();
-var b = randomNumber();
+function napraviBrojeve(n) {
+    var niz = []
+    for (let i = 0; i < n; i++) {
+        niz.push(randomNumber());
+    }
+    return niz;
+}
+
+var brojevi = napraviBrojeve(2);
+
+// var a = randomNumber();
+// var b = randomNumber();
 var pitanje = document.getElementById('pitanje');
 var odgovor = document.getElementById('odgovor');
 var score = 0;
@@ -34,23 +44,32 @@ function question(a, b) {
     pitanje.innerText = a + ' + ' + b + ' = ?';
 }
 
-question(a, b);
+question(brojevi[0], brojevi[1]);
+
+function resetSvega(odg) {
+    if (odg === true) {
+        score++;
+        correctAnswer();
+    }
+    if (odg === false) {
+        score--;
+        incorrectAnswer();
+    }
+    scoreCounter.innerText = score;
+    odgovor.value = '';
+    brojevi = napraviBrojeve(2);
+    question(brojevi[0], brojevi[1]);
+}
 
 odgovor.addEventListener('keypress', function (e) {
     if (e.key === 'Enter') {
         // console.log('stisnut enter', parseInt(odgovor.value));
-        if (a + b === parseInt(odgovor.value)) {
+        if (brojevi[0] + brojevi[1] === parseInt(odgovor.value)) {
             // console.log('tacno');
-            score++;
-            scoreCounter.innerText = score;
-            odgovor.value = '';
-            correctAnswer();
+            resetSvega(true);
         } else {
             // console.log('nije tacno');
-            score--;
-            scoreCounter.innerText = score;
-            odgovor.value = '';
-            incorrectAnswer();
+            resetSvega(false);
         }
     }
 });
