@@ -1,0 +1,9 @@
+body {
+    background-color: #999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+body > div {
+    padding: 30px;
+}
