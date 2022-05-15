@@ -4,6 +4,15 @@ body {
     justify-content: center;
     align-items: center;
 }
+
 body > div {
     padding: 30px;
+}
+
+p {
+    font-size: 1.2em;
+}
+
+span {
+    text-decoration: underline;
 }
