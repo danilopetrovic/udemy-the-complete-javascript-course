@@ -2,6 +2,7 @@ var budgetController = (function () {
 
 })();
 
+//UI CONTROLLER
 var UIController = (function () {
 
     var DOMstrings = {
@@ -26,6 +27,7 @@ var UIController = (function () {
     }
 })();
 
+//GLOBAL APP CONTROLLER
 var controller = (function (budgetCtrl, UICtrl) {
 
     var setupEventListeners = function () {
