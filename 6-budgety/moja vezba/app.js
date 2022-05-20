@@ -58,6 +58,20 @@ var budgetController = (function () {
             return newItem;
         },
 
+        deleteItem: function (type, id) {
+            var ids, index;
+            ids = data.allItems[type].map(function (current) {
+                // console.log(current.id);
+                return current.id;
+            });
+            index = ids.indexOf(id);
+            // console.log('ids = ' + ids + ', index = ' + index);
+
+            if (index !== -1) {
+                data.allItems[type].splice(index, 1);
+            }
+        },
+
         calculateBudget: function () {
             // Calculate total income and expenses
             calculateTotal('exp');
@@ -221,18 +235,18 @@ var controller = (function (budgetCtrl, UICtrl) {
     };
 
     var ctrlDeleteItem = function (event) {
-        console.log(event.target.parentNode.parentNode.parentNode.parentNode.id);
+        // console.log(event.target.parentNode.parentNode.parentNode.parentNode.id);
         var itemID, splitID, type, ID;
         itemID = event.target.parentNode.parentNode.parentNode.parentNode.id;
 
         if (itemID) {
             splitID = itemID.split('-');
             type = splitID[0];
-            ID = splitID[1];
+            ID = parseInt(splitID[1]);
             // console.log(splitID, type, ID);
 
             // 1. Delete the item from the data structure
-
+            budgetCtrl.deleteItem(type, ID);
 
             // 2. Delete the item from the UI
 
