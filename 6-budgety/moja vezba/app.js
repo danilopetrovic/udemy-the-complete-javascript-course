@@ -82,8 +82,10 @@ var budgetController = (function () {
 
             // Calculate the percentage of income that we spent
             if (data.totals.inc > 0 && data.totals.inc > data.totals.exp) {
+                // calculate percentage in int
                 // data.percentage = Math.round((data.totals.exp / data.totals.inc) * 100)
-                // for 2 decimals round use: parseFloat(objNumber.toFixed(2))
+
+                // calculate percentage in float (2 decimals)
                 data.percentage = parseFloat(((data.totals.exp / data.totals.inc) * 100).toFixed(2));
             } else {
                 data.percentage = -1
@@ -152,6 +154,10 @@ var UIController = (function () {
             document.querySelector(element).insertAdjacentHTML('beforeend', newHtml);
 
 
+        },
+
+        deleteListItem: function (selectorID) {
+            document.getElementById(selectorID).remove();
         },
 
         clearFields: function () {
@@ -249,10 +255,10 @@ var controller = (function (budgetCtrl, UICtrl) {
             budgetCtrl.deleteItem(type, ID);
 
             // 2. Delete the item from the UI
-
+            UICtrl.deleteListItem(itemID);
 
             // 3. Update and show new budget
-
+            updateBudget();
         }
     };
 
