@@ -31,7 +31,7 @@ const controlSearch = async () => {
         // 5) Render results on UI
         // console.log(state.search.result);
         clearLoader();
-        searchView.renderResults(state.search.result);
+        searchView.renderResults(state.search.result, 1);
     }
 }
 
@@ -39,3 +39,13 @@ elements.searchForm.addEventListener('submit', e => {
     e.preventDefault();
     controlSearch();
 });
+
+elements.searchResPages.addEventListener('click', e => {
+    // console.log(e.target);
+    const btn = e.target.closest('.btn-inline');
+    if (btn) {
+        const goToPage = parseInt(btn.dataset.goto, 10);
+        searchView.clearResults();
+        searchView.renderResults(state.search.result, goToPage);
+    }
+})
